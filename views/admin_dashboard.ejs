@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Solution Exchange</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../css/main.css" />
+</head>
+
+<body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+            <section id="header" class="wrapper">
+
+                <!-- Logo -->
+                    <div id="logo">
+                        <h1>Hello <%= user.username %></h1>
+                    </div>
+
+                <!-- Nav -->
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="/dashboard">Home</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="/admin/getAllUsers">Users</a></li>
+                            <li><a href="/admin/getAllExperts">Experts</a></li>
+                            <li><a href="/admin/getAllAssignments">Assignments</a></li>
+                            <li><a href="/experts/logout">Logout</a></li>
+                        </ul>
+                    </nav>
+            </section>
+
+        <!-- Main -->
+            <div id="main" class="wrapper style2">
+                <!-- <div class="title">Latest Assignments</div> -->
+                <div class="container">
+
+                    <div id="content">
+                        <article class="box post">
+                            <header class="style1" style="padding-top: 50px">
+                                <% if(assignments.length) { %>
+                                    <h2>Assign the assignments to the respective expert</h2>
+                                    <hr>
+                                    <table class="default">
+                                        <tr>
+                                            
+                                            <th>Username</th>
+                                            <th>Assignment</th>
+                                            <th>Subject</th>
+                                            <th>Upload Date</th>
+                                            <th>Due date</th>
+                                            <th>Expert Name</th>
+                                            <th>Submit</th>
+                                        </tr>
+                                        <% for(let i=0; i < assignments.length; i++) { %>
+                                           <tr>
+                                                <td><%= assignments[i].username %></td>
+                                                <td><%= assignments[i].filename %></td>
+                                                <td><%= assignments[i].subject %></td>
+                                                <td><%= assignments[i].upload_timestamp %></td>
+                                                <td><%= assignments[i].due_date %></td>
+                                                <td>
+                                                    <select name="expert" class="<%= assignments[i]._id %>">
+                                                        <option value="0">- Select an expert -</option>
+                                                        <% for(let i=0; i < experts.length; i++) { %>
+                                                            <option value='<%= experts[i]._id%>' ><%= experts[i].username%></option>
+                                                        <% } %>
+                                                    </select>
+                                                </td>
+                                                <td><button class="submit-btn" id='<%= assignments[i]._id %>'>Submit</button></td>
+                                           </tr>
+                                        <% } %>
+                                    </table>
+                                <% } else { %>
+                                    <hr>
+                                    <h2>All assignments are assigned.</h2>
+                                    <h2>No new assignments</h2>
+                                    <hr>                                    
+                                    <hr>
+                                    <% }
+                                %>
+                            </header>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Footer -->
+            <section id="footer" class="wrapper">
+                <div class="container">
+                    <div id="copyright">
+                        <ul>
+                            <li>&copy; Solution Exchange</li><li>All rights reserved.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+    </div>
+    
+	<!-- Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.dropotron.min.js"></script>
+	<script src="../js/browser.min.js"></script>
+	<script src="../js/breakpoints.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/main.js"></script>
+
+    <script>
+        $('.submit-btn').click(function(){
+            let expertName = document.getElementsByClassName(this.id)[0];
+
+            let payload = {
+                assignment_id : this.id,
+                expert_id : expertName.value
+            }
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    location.reload();
+                } else {
+                   
+                }
+            };
+
+            xhr.open('POST', '/admin/assignAssignment', true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(JSON.stringify(payload));
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Solution Exchange</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../css/main.css" />
+</head>
+
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+
+        <section id="header" class="wrapper">
+            <!-- Logo -->
+                <div id="logo">
+                    <h1><a href="/">Escape Velocity</a></h1>
+                    <p>A free responsive site template by HTML5 UP</p>
+                </div>
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="/">Welcome</a></li>
+                        <li><a href="/users/register">User SignUP</a></li>
+                        <li><a href="/users/login">User login</a></li>
+                        <li><a href="/experts/register">Experts signup</a></li>
+                        <li><a href="/experts/login">Experts login</a></li>
+                    </ul>
+                </nav>
+        </section>
+        
+        <!-- Main -->
+        <section id="main" class="wrapper style2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-12-medium">
+                        <section class="feature-list small">
+                            <div class="row">
+                                <div class="col-12 col-12-medium">
+                                    <section>
+                                        <h3 class="solid">Study Today</h3>
+                                        <p>
+                                            Study today for success, <br />
+                                            do it today.
+                                        </p>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="col-6 col-12-small">
+                        
+                        <!-- Sign Up Form -->
+                        <section>
+                            <form method="post" action="/users/register">
+                                <div class="row gtr-50">
+                                    <div class="col-12 col-12-small">
+                                        <input type="text" name="username" id="username" placeholder="username" value="<%= typeof username != 'undefined' ? username : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="email" name="email" id="email" placeholder="Email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="password" name="password" id="password" placeholder="Password" value="<%= typeof password != 'undefined' ? password : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="password" name="password2" id="password2" placeholder="Confirm Password" value="<%= typeof password2 != 'undefined' ? password2 : '' %>"/>
+                                    </div>
+                                    <div class="col-12">
+                                        <ul class="actions">
+                                            <li><input type="submit" class="style1" value="Register" /></li>
+                                            <li><input type="reset" class="style2" value="Reset" /></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </form>
+                            <h3 class="solid">Already have an account? <a href="/users/login">Login here</a></h3>
+                        </section>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="footer">
+            <div id="copyright">
+                <ul>
+                    <li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>

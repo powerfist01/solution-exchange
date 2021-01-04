@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Solution Exchange</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../css/main.css" />
+</head>
+
+<body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+            <section id="header" class="wrapper">
+                <!-- Nav -->
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="/dashboard">Home</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="/admin/getAllUsers">Users</a></li>
+                            <li><a href="/admin/getAllExperts">Experts</a></li>
+                            <li><a href="/admin/getAllAssignments">Assignments</a></li>
+                            <li><a href="/experts/logout">Logout</a></li>
+                        </ul>
+                    </nav>
+            </section>
+
+        <!-- Main -->
+            <div id="main" class="wrapper style2">
+                <div class="title">Assignments</div>
+                <div class="container">
+
+                    <div id="content">
+                        <article class="box post">
+                            <header class="style1">
+                                <h2>Lorem ipsum dolor sit amet magna egestas<br class="mobile-hide" />
+                                morbi bibendum sed malesuada</h2>
+
+                                <table class="default">
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Assignment Name</th>
+                                        <th>Subject</th>
+                                        <th>Due date</th>
+                                        <th>Assign</th>
+                                    </tr>
+                                    <% for(let i=0; i < assignments.length; i++) { %>
+                                       <tr>
+                                            <td><%= assignments[i].username %></td>
+                                            <td><%= assignments[i].assignment %></td>
+                                            <td><%= assignments[i].subject %></td>
+                                            <td><%= assignments[i].due_date %></td>
+                                            <td><%= assignments[i].assign %></td>
+                                       </tr>
+                                    <% } %>
+                                </table>
+
+                                <!-- <p>Tempus feugiat veroeros sed nullam dolore</p> -->
+                            </header>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Footer -->
+            <section id="footer" class="wrapper">
+                <!-- <div class="title">The Rest Of It</div> -->
+                <div class="container">
+                    <div id="copyright">
+                        <ul>
+                            <li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+    </div>
+
+	<!-- Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.dropotron.min.js"></script>
+	<script src="../js/browser.min.js"></script>
+	<script src="../js/breakpoints.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/main.js"></script>
+
+</body>
+
+</html>
