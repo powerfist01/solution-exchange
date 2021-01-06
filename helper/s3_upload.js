@@ -77,4 +77,19 @@ var upload = multer({
     fileFilter: fileFilter
 });
 
+// https://assignments-soluge.s3.us-east-2.amazonaws.com/
+
+function getImage(){
+    s3.getObject({
+        Bucket: 'assignments-soluge',
+        Key: 'icpc.pdf'
+    }, function(err,data){
+        if(err)
+            console.log(err);
+        else{
+            console.log(data);
+        }
+    });
+}
+
 module.exports = upload;

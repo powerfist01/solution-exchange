@@ -22,7 +22,7 @@
                         <li><a href="/admin/getAllUsers">Users</a></li>
                         <li><a href="/admin/getAllExperts">Experts</a></li>
                         <li><a href="/admin/getAllAssignments">Assignments</a></li>
-                        <li><a href="/experts/logout">Logout</a></li>
+                        <li><a href="/expert/logout">Logout</a></li>
                     </ul>
                 </nav>
             </section>
@@ -37,7 +37,9 @@
                                 <table class="default">
                                     <tr>
                                         <th>S.No</th>
+                                        <th>Username</th>
                                         <th>Assignment</th>
+                                        <th>Expert</th>
                                         <th>Upload Timestamp</th>
                                         <th>Due Date</th>
                                         <th>Solution</th>
@@ -45,7 +47,9 @@
                                     <% for(let i=0; i < assignments.length; i++) { %>
                                        <tr>
                                         <td><%= i %></td>
+                                        <td><%= assignments[i].username %></td>
                                         <td><%= assignments[i].filename %></td>
+                                        <td><%= assignments[i].expert_username %></td>
                                         <td><%= assignments[i].upload_timestamp %></td>
                                          <td><%= assignments[i].due_date %></td>
                                          <td><%= assignments[i].solution %></td>

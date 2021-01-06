@@ -18,10 +18,8 @@
                         <ul>
                             <li><a href="/dashboard">Home</a></li>
                             <li><a href="#">Profile</a></li>
+                            <li><a href="/assignments/assignments">My Assignments</a></li>
                             <li><a href="#">Settings</a></li>
-                            <li><a href="/admin/getAllUsers">Users</a></li>
-                            <li><a href="/admin/getAllExperts">Experts</a></li>
-                            <li><a href="/admin/getAllAssignments">Assignments</a></li>
                             <li><a href="/expert/logout">Logout</a></li>
                         </ul>
                     </nav>
@@ -29,35 +27,29 @@
 
         <!-- Main -->
             <div id="main" class="wrapper style2">
-                <div class="title">Assignments</div>
                 <div class="container">
-
                     <div id="content">
                         <article class="box post">
                             <header class="style1">
-                                <h2>Lorem ipsum dolor sit amet magna egestas<br class="mobile-hide" />
-                                morbi bibendum sed malesuada</h2>
-
                                 <table class="default">
                                     <tr>
-                                        <th>User</th>
-                                        <th>Assignment Name</th>
-                                        <th>Subject</th>
-                                        <th>Due date</th>
-                                        <th>Assign</th>
+                                        <th>S.No</th>
+                                        <th>Username</th>
+                                        <th>Assignment</th>
+                                        <th>Due Date</th>
+                                        <th>Solution</th>
                                     </tr>
                                     <% for(let i=0; i < assignments.length; i++) { %>
                                        <tr>
-                                            <td><%= assignments[i].username %></td>
-                                            <td><%= assignments[i].assignment %></td>
-                                            <td><%= assignments[i].subject %></td>
-                                            <td><%= assignments[i].due_date %></td>
-                                            <td><%= assignments[i].assign %></td>
+                                        <td><%= i %></td>
+                                        <td><%= assignments[i].username %></td>
+                                        <td><%= assignments[i].filename %></td>
+                                        <td><%= assignments[i].due_date %></td>
+                                        <td><%= assignments[i].solution %></td>
                                        </tr>
                                     <% } %>
                                 </table>
 
-                                <!-- <p>Tempus feugiat veroeros sed nullam dolore</p> -->
                             </header>
                         </article>
                     </div>

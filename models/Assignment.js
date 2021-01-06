@@ -21,7 +21,15 @@ const AssignmentSchema = new mongoose.Schema({
         type: Date,
         required: false
     },
+    accepted: {
+        type: Boolean,
+        default: false
+    },
     expert_id: {
+        type: String,
+        default: null
+    },
+    expert_username: {
         type: String,
         default: null
     },

@@ -25,8 +25,9 @@
                         <ul>
                             <li><a href="/dashboard">Home</a></li>
                             <li><a href="#">Profile</a></li>
+                            <li><a href="/expert/assignments">My Assignments</a></li>
                             <li><a href="#">Settings</a></li>
-                            <li class="current"><a href="/experts/logout">Logout</a></li>
+                            <li class="current"><a href="/expert/logout">Logout</a></li>
                         </ul>
                     </nav>
             </section>
@@ -39,35 +40,44 @@
                     <div id="content">
                         <article class="box post">
                             <header class="style1">
-                                <!-- <h2>Lorem ipsum dolor sit amet magna egestas<br class="mobile-hide" />
-                                morbi bibendum sed malesuada</h2> -->
-                                <!-- <p>Tempus feugiat veroeros sed nullam dolore</p> -->
+                               
                             </header>
                         </article>
                         <section>
-                            <form action="/assignments/upload" method="post" enctype="multipart/form-data">
-                                <div class="row gtr-50">
-                                    <div class="col-12 col-12-small">
-                                        <select name="category" id="category">
-                                            <option value="0">- Category -</option>
-                                            <option value="1">Mathematics</option>
-                                            <option value="2">Physics</option>
-                                            <option value="3">Chemistry</option>
-                                            <option value="4">English</option>
-                                            <option value="5">Hindi</option>
-                                            <option value="6">Biology</option>
-                                            <option value="7">Computer</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12 col-12-small">
-                                        <input type="file" name="assignment" />
-                                    </div>
-                                    <div class="col-12 col-12-small">
-                                        <button type="submit" class="button primary icon solid fa-upload" value="Upload">Upload</button>
-                                       <input type="reset" class="style1" value="Reset" />
-                                    </div>
-                                </div>
-                            </form>
+                            <article class="box post">
+                                <header class="style1" style="padding-top: 50px">
+                                    <% if(assignments.length) { %>
+                                        <h2>Latest assignments not accepted.</h2>
+                                        <hr>
+                                        <table class="default">
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Assignment</th>
+                                                <th>Subject</th>
+                                                <th>Upload Date</th>
+                                                <th>Due date</th>
+                                                <th>Accept</th>
+                                            </tr>
+                                            <% for(let i=0; i < assignments.length; i++) { %>
+                                               <tr>
+                                                    <td><%= assignments[i].username %></td>
+                                                    <td><%= assignments[i].filename %></td>
+                                                    <td><%= assignments[i].subject %></td>
+                                                    <td><%= assignments[i].upload_timestamp %></td>
+                                                    <td><%= assignments[i].due_date %></td>
+                                                    <td><button class="submit-btn" id='<%= assignments[i]._id %>'>Accept</button></td>
+                                               </tr>
+                                            <% } %>
+                                        </table>
+                                    <% } else { %>
+                                        <hr>
+                                        <h2>No new assignments</h2>
+                                        <hr>                                    
+                                        <hr>
+                                        <% }
+                                    %>
+                                </header>
+                            </article>
                         </section>
                     </div>
                 </div>
@@ -94,6 +104,28 @@
 	<script src="../js/breakpoints.min.js"></script>
 	<script src="../js/util.js"></script>
 	<script src="../js/main.js"></script>
+
+    <script>
+        $('.submit-btn').click(function(){
+            let payload = {
+                assignment_id : this.id
+            }
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    location.reload();
+                } else {
+                //    pass
+                }
+            };
+
+            xhr.open('POST', '/expert/acceptAssignment', true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(JSON.stringify(payload));
+        })
+    </script>
 
 </body>
 

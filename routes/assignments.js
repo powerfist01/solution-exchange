@@ -4,12 +4,12 @@ const router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
 const Assignment = require('../models/Assignment');
 
-var upload = require('../helper/s3_upload');
+var upload = require('../helper/local_upload');
 
 // Upload
 router.post('/upload', ensureAuthenticated, upload.array('assignment'), (req,res,next) => {
     try {
-        return res.redirect('/dashboard')
+        return res.redirect('/dashboard');
     } catch (error) {
         console.error(error);
     }

@@ -8,6 +8,10 @@ const UserSchema = new mongoose.Schema({
   fullname: {
     type: String
   },
+  phone: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true
@@ -39,7 +43,7 @@ const UserSchema = new mongoose.Schema({
     enum: ['user','expert','admin']
   },
   subject:{
-    type: String
+    type: Array
   },
   date_of_joining: {
     type: Date,

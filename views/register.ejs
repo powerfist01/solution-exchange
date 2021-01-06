@@ -18,8 +18,8 @@
                         <li><a href="/">Welcome</a></li>
                         <li><a href="/users/register">User SignUP</a></li>
                         <li><a href="/users/login">User login</a></li>
-                        <li><a href="/experts/register">Experts signup</a></li>
-                        <li><a href="/experts/login">Experts login</a></li>
+                        <li><a href="/expert/register">Experts signup</a></li>
+                        <li><a href="/expert/login">Experts login</a></li>
                     </ul>
                 </nav>
         </section>
@@ -55,6 +55,9 @@
                                     </div>
                                     <div class="col-12 col-12-small">
                                         <input type="email" name="email" id="email" placeholder="Email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="text" name="phone" id="phone" placeholder="Phone Number" value="<%= typeof phone != 'undefined' ? phone : '' %>"/>
                                     </div>
                                     <div class="col-12 col-12-small">
                                         <input type="password" name="password" id="password" placeholder="Password" value="<%= typeof password != 'undefined' ? password : '' %>"/>
