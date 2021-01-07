@@ -1,6 +1,5 @@
 const multer  = require('multer');
 
-const { ensureAuthenticated } = require('../config/auth');
 const Assignment = require('../models/Assignment');
 const User = require('../models/User');
 

@@ -7,7 +7,6 @@ const passport = require('passport');
 const User = require('../models/User');
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 const Assignment = require('../models/Assignment');
-const { route } = require('./admin');
 
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('expert_login'));
