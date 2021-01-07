@@ -37,7 +37,7 @@
                                         <th>Username</th>
                                         <th>Assignment</th>
                                         <th>Due Date</th>
-                                        <th>Solution</th>
+                                        <th>Solution - Upload the solution here >>>>>>></th>
                                     </tr>
                                     <% for(let i=0; i < assignments.length; i++) { %>
                                        <tr>
@@ -45,7 +45,23 @@
                                         <td><%= assignments[i].username %></td>
                                         <td><%= assignments[i].filename %></td>
                                         <td><%= assignments[i].due_date %></td>
-                                        <td><%= assignments[i].solution %></td>
+                                        <td>
+                                            <form action="/expert/uploadSolution">
+                                                <div class="row">
+                                                    <div class="col-6 col-12-medium">
+                                                        <section>
+                                                            <input type="hidden" name="assignment_id" value='<%= assignments[i]._id %>'>
+                                                            <input type="file" name="solution">
+                                                        </section>
+                                                    </div>
+                                                    <div class="col-6 col-12-medium">
+                                                        <section>
+                                                            <button type="submit">Upload</button>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </td>
                                        </tr>
                                     <% } %>
                                 </table>

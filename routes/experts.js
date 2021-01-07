@@ -9,10 +9,10 @@ const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 const Assignment = require('../models/Assignment');
 
 // Login Page
-router.get('/login', forwardAuthenticated, (req, res) => res.render('expert_login'));
+router.get('/login', forwardAuthenticated, getLoginPage);
 
 // Register Page
-router.get('/register', forwardAuthenticated, (req, res) => res.render('expert_register'));
+router.get('/register', forwardAuthenticated, getRegisterPage);
 
 // Register
 router.post('/register', (req, res) => {
@@ -68,11 +68,21 @@ router.get('/dashboard', ensureAuthenticated, myDashboard);
 
 router.post('/acceptAssignment', ensureAuthenticated, acceptAssignment);
 
+router.post('/uploadSolution', ensureAuthenticated, uploadSolution);
+
+function getLoginPage(req, res, next){
+  res.render('expert_login')
+}
+
+function getRegisterPage(req, res, next){
+  res.render('expert_register')
+}
 
 function logout(req, res){
   req.logout();
   res.redirect('/expert/login');
 }
+
 function getAssignments(req, res, next) {
   Assignment.find({ expert_id: req.user._id, accepted: true })
     .then(function (assignments) {
@@ -106,4 +116,7 @@ function acceptAssignment(req,res,next){
 })
 }
 
+function uploadSolution(req,res,next){
+  
+}
 module.exports = router;

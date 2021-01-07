@@ -5,6 +5,10 @@ const AssignmentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    solution_filename: {
+        type: String,
+        required: false
+    },
     subject: {
         type: String,
         required: true
