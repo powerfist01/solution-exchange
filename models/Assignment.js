@@ -7,7 +7,8 @@ const AssignmentSchema = new mongoose.Schema({
     },
     solution_filename: {
         type: String,
-        required: false
+        required: false,
+        default: null
     },
     subject: {
         type: String,

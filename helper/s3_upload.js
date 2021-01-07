@@ -32,7 +32,7 @@ function getSubject(category){
 }
 
 const fileFilter = (req, file, cb) => {
-    if(file.originalname.match(/\.(txt|pdf|docx|jpg|jpeg|png)$/)){
+    if(file.originalname.match(/\.(txt|pdf|docx|jpg|jpeg|png|zip)$/)){
         let id = req.session["passport"]["user"];
         let promise = new Promise(function(resolve,reject){
             User.findOne({_id: id}, function(err,user){

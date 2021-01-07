@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 const storage = multer.diskStorage(
     {
-        destination: './uploads/',
+        destination: './uploads/assignments',
         filename: function ( req, file, cb ) {
             cb( null, file.originalname);
         }
@@ -13,7 +13,7 @@ const storage = multer.diskStorage(
 );
 
 const fileFilter = (req, file, cb) => {
-    if(file.originalname.match(/\.(txt|pdf|docx|jpg|jpeg|png)$/)){
+    if(file.originalname.match(/\.(txt|pdf|docx|jpg|jpeg|png|zip)$/)){
         let id = req.session["passport"]["user"];
         let promise = new Promise(function(resolve,reject){
             User.findOne({_id: id}, function(err,user){

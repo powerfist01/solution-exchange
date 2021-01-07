@@ -46,7 +46,7 @@ function getAllAssignments(req,res,next){
 function assignAssignment(req,res,next){
     const { assignment_id, expert_id } = req.body;
     console.log(assignment_id);
-    Assignment.updateOne({_id: assignment_id},{ expert_id: expert_id}, function(err,result){
+    Assignment.updateOne({_id: assignment_id},{ expert_id: expert_id, assigned_timestamp: Date.now()}, function(err,result){
         if(err){
             console.log(err);
         } else {

@@ -3,10 +3,12 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
-// Load User model
 const User = require('../models/User');
-const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 const Assignment = require('../models/Assignment');
+
+var upload = require('../helper/upload_solution');
+
+const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 
 // Login Page
 router.get('/login', forwardAuthenticated, getLoginPage);
@@ -68,7 +70,13 @@ router.get('/dashboard', ensureAuthenticated, myDashboard);
 
 router.post('/acceptAssignment', ensureAuthenticated, acceptAssignment);
 
-router.post('/uploadSolution', ensureAuthenticated, uploadSolution);
+router.post('/uploadSolution', ensureAuthenticated, upload.array('solution'), (req,res,next) => {
+  try {
+      res.redirect('/expert/assignments');
+  } catch (error) {
+      console.error(error);
+  }
+})
 
 function getLoginPage(req, res, next){
   res.render('expert_login')
@@ -113,10 +121,7 @@ function acceptAssignment(req,res,next){
     } else {
         res.send(result);
     }
-})
+  })
 }
 
-function uploadSolution(req,res,next){
-  
-}
 module.exports = router;
