@@ -39,12 +39,13 @@
                                         <th>Due Date</th>
                                         <th>Solution</th>
                                     </tr>
+                                    
                                     <% for(let i=0; i < assignments.length; i++) { %>
                                        <tr>
                                         <td><%= i %></td>
                                         <td><%= assignments[i].filename %></td>
                                          <td><%= assignments[i].due_date %></td>
-                                         <td><%= assignments[i].solution %></td>
+                                         <td><%= assignments[i].solution_filename %></td>
                                        </tr>
                                     <% } %>
                                 </table>

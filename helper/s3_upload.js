@@ -68,7 +68,7 @@ const fileFilter = (req, file, cb) => {
 var upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'assignments-soluge',
+        bucket: 'assignments-soluge/problem',
         key: function (req, file, cb) {
             console.log(file);
             cb(null, file.originalname); //use Date.now() for unique file keys

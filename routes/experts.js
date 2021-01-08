@@ -6,7 +6,7 @@ const passport = require('passport');
 const User = require('../models/User');
 const Assignment = require('../models/Assignment');
 
-var upload = require('../helper/upload_solution');
+var upload = require('../helper/s3_uploadSolution');
 
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 
@@ -102,9 +102,6 @@ function getAssignments(req, res, next) {
 
 function myDashboard(req, res, next) {
   Assignment.find({ expert_id: req.user._id, accepted: false }).sort({ upload_timestamp: -1 })
-    .then(function (assignments) {
-      return (assignments);
-    })
     .then(function (assignments) {
       res.render('expert_dashboard', {
         user: req.user,

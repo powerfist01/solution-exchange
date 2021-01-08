@@ -4,7 +4,7 @@ const router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
 const Assignment = require('../models/Assignment');
 
-var upload = require('../helper/local_upload');
+var upload = require('../helper/s3_upload');
 
 // Upload
 router.post('/upload', ensureAuthenticated, upload.array('assignment'), (req,res,next) => {
@@ -18,9 +18,10 @@ router.post('/upload', ensureAuthenticated, upload.array('assignment'), (req,res
 router.get('/assignments', ensureAuthenticated ,getAssignments);
 
 function getAssignments(req,res,next){
-    console.log(req.user)
+    
     Assignment.find({user_id: req.user._id})
     .then(function(assignments){
+        console.log(assignments)
         res.render('user_assignments',{
             assignments: assignments
         });
