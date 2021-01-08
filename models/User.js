@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true
+    required: false
   },
   fullname: {
     type: String
   },
   phone: {
     type: String,
-    required: true
+    required: false
   },
   email: {
     type: String,
