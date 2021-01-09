@@ -1,0 +1,80 @@
+HIST-1301 USA History
+MUSI-1306 Music Appreciation
+GOVT-2305 Federal Govt
+BIO-1406-Bio for Sci Majors
+Chemistry
+Calc 1
+English 1
+English 2
+Intro to Psychology
+Soc-100
+CIS-100Intro to Info Tech
+Geo-132 world Reg Geo
+MGT-231 supervision & Teambuilding
+Criminal Justice
+Intro to Chemistry
+Calc2
+Calc 4
+statistic
+Microbiology
+Bio-131
+eng-132
+Maths
+Physics
+Eng. Physics 2
+English 2
+Circuits and system 2
+Eng. Physics 1
+Anatomy
+Math-175
+Math-115
+Math-155
+Bio-131
+SPH-101
+PHL-201 (Philosophy)
+Eng-130 Intro to Engineering
+Engr-125 Intro to comp
+Mat-131 (Mat for mod world)
+Mat-131 (statistics)
+ECO-101 (Economics)
+PHY-232(Eng Physics)
+Bio -131 (Intro to bio)
+PHY-275 (Physics)
+TCM-131 (Telecommunication)
+Soc-131 (Sociology)
+Mat-172 (Calculus-2)
+Mat-171 (Calculus-1)
+Mat-271 (Calculus-3)
+PHL-101 (Comp Religion)
+Bio-250 (Anatomy)
+Bio-295 (Microbiology)
+Soc-100 (Sociology)
+Bio-155 (Bio)
+Bio-151 (Bio)
+Eng-131 (English)
+Mth-31 (geo and cal )
+Acc-110 (Accounting)
+BUS-225 (Com App in Bus)
+PSY-200 (Psychology)
+Eng-119(English)
+Eng-120 (English)
+Senior Design
+Ethics
+Analog Communication
+Math 115
+ECE-319-001 (Electro Comp)
+ECE-385(Electronic devices)
+IMSE-421(Eng Eco )
+Ece-4361 Elec Mac and drive
+ECE-311 ( Electronic Circuit 1)
+ECE-3171 (Ana&DiscSig&sys)
+ECE-3731 (Micro & Emb)
+ECE-273 (Digital System)
+IMSE-317 (Prob & Statistic)
+Ece-270 Comp meth( C++)
+ENGR 400 Business
+Discrete Maths
+ECE 413 (VLSI Design)
+ECE 414 Elec Sys Des
+ECE 4432 (Power system)
+miscellaneous work

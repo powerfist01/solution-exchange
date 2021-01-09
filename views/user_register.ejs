@@ -11,19 +11,19 @@
 <body class="homepage is-preload">
     <div id="page-wrapper">
 
-        <!-- Nav -->
-        <section id="header" class="wrapper">            
-            <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <li><a href="/">Welcome</a></li>
-                    <li><a href="/users/register">User SignUP</a></li>
-                    <li><a href="/users/login">User login</a></li>
-                    <li><a href="/expert/register">Experts signup</a></li>
-                    <li><a href="/expert/login">Experts login</a></li>
-                </ul>
-            </nav>
+        <section id="header" class="wrapper">
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="/">Welcome</a></li>
+                        <li><a href="/user/register">User SignUP</a></li>
+                        <li><a href="/user/login">User login</a></li>
+                        <li><a href="/expert/register">Experts signup</a></li>
+                        <li><a href="/expert/login">Experts login</a></li>
+                    </ul>
+                </nav>
         </section>
+        
         <!-- Main -->
         <section id="main" class="wrapper style2">
             <div class="container">
@@ -43,32 +43,37 @@
                             </div>
                         </section>
                     </div>
+
                     <div class="col-6 col-12-small">
+                        
                         <!-- Sign Up Form -->
                         <section>
-                            <h3 class="solid">Solution Exchange</h3>
-                            <p>
-                                
-                            </p>
-                        </section>
-                        <section>
-                            <form method="POST" action="/users/login">
+                            <form method="post" action="/user/register">
                                 <div class="row gtr-50">
                                     <div class="col-12 col-12-small">
-                                        <input type="text" name="email" id="email" placeholder="Email address" />
+                                        <input type="text" name="username" id="username" placeholder="username" value="<%= typeof username != 'undefined' ? username : '' %>"/>
                                     </div>
                                     <div class="col-12 col-12-small">
-                                        <input type="text" name="password" id="password" placeholder="Password" />
+                                        <input type="email" name="email" id="email" placeholder="Email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="text" name="phone" id="phone" placeholder="Phone Number" value="<%= typeof phone != 'undefined' ? phone : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="password" name="password" id="password" placeholder="Password" value="<%= typeof password != 'undefined' ? password : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="password" name="password2" id="password2" placeholder="Confirm Password" value="<%= typeof password2 != 'undefined' ? password2 : '' %>"/>
                                     </div>
                                     <div class="col-12">
                                         <ul class="actions">
-                                            <li><input type="submit" class="style1" value="Send" /></li>
+                                            <li><input type="submit" class="style1" value="Register" /></li>
                                             <li><input type="reset" class="style2" value="Reset" /></li>
                                         </ul>
                                     </div>
                                 </div>
                             </form>
-                            <h3 class="solid">Don't have an account? <a href="/users/register">Signup here</a></h3>
+                            <h3 class="solid">Already have an account? <a href="/user/login">Login here</a></h3>
                         </section>
                     </div>
                     
@@ -76,7 +81,7 @@
             </div>
         </section>
 
-        <section id="footer" >
+        <section id="footer">
             <div id="copyright">
                 <ul>
                     <li>&copy; Solution Exchange</li><li>All rights reserved.</a></li>

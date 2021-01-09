@@ -24,7 +24,7 @@ const AssignmentSchema = new mongoose.Schema({
     },
     due_date: {
         type: Date,
-        required: false
+        required: true
     },
     accepted: {
         type: Boolean,

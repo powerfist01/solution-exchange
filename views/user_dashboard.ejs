@@ -25,43 +25,41 @@
                         <ul>
                             <li><a href="/dashboard">Home</a></li>
                             <li><a href="#">Profile</a></li>
-                            <li><a href="/assignments/assignments">My Assignments</a></li>
+                            <li><a href="/user/assignments">My Assignments</a></li>
                             <li><a href="#">Settings</a></li>
-                            <li class="current"><a href="/users/logout">Logout</a></li>
+                            <li class="current"><a href="/user/logout">Logout</a></li>
                         </ul>
                     </nav>
             </section>
 
         <!-- Main -->
             <div id="main" class="wrapper style2">
-                <div class="title">No Sidebar</div>
+                <!-- <div class="title">No Sidebar</div> -->
                 <div class="container">
 
                     <div id="content">
                         <article class="box post">
-                            <header class="style1">
+                            <!-- <header class="style1">
                                 <h2>Lorem ipsum dolor sit amet magna egestas<br class="mobile-hide" />
                                 morbi bibendum sed malesuada</h2>
-                                <!-- <p>Tempus feugiat veroeros sed nullam dolore</p> -->
-                            </header>
+                            </header> -->
                         </article>
                         <section>
-                            <form action="/assignments/upload" method="post" enctype="multipart/form-data">
+                            <form action="/user/upload" method="post" enctype="multipart/form-data">
                                 <div class="row gtr-50">
                                     <div class="col-12 col-12-small">
-                                        <select name="category" id="category">
-                                            <option value="0">- Category -</option>
-                                            <option value="1">Mathematics</option>
-                                            <option value="2">Physics</option>
-                                            <option value="3">Chemistry</option>
-                                            <option value="4">English</option>
-                                            <option value="5">Hindi</option>
-                                            <option value="6">Biology</option>
-                                            <option value="7">Computer</option>
+                                        <select name="subject_id" id="subject">
+                                            <option value="0">- Select a subject -</option>
+                                            <% for(let i=0; i < subjects.length; i++) { %>
+                                                <option value=<%= subjects[i].id %> ><%= subjects[i].subjectName %></option>
+                                             <% } %>                                         
                                         </select>
                                     </div>
                                     <div class="col-12 col-12-small">
-                                        <input type="file" name="assignment" />
+                                        <input type="date" name="due_date" id="due_date">
+                                    </div>
+                                    <div class="col-12 col-12-small">
+                                        <input type="file" name="assignment" id="assignment">
                                     </div>
                                     <div class="col-12 col-12-small">
                                         <button type="submit" class="button primary icon solid fa-upload" value="Upload">Upload</button>
@@ -70,6 +68,7 @@
                                 </div>
                             </form>
                         </section>
+                        <button id="rzp-button1">Pay</button>
                     </div>
                 </div>
             </div>
@@ -95,6 +94,36 @@
 	<script src="../js/breakpoints.min.js"></script>
 	<script src="../js/util.js"></script>
 	<script src="../js/main.js"></script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        "key": "rzp_test_zUSc3vnrbpf5dU", // Enter the Key ID generated from the Dashboard
+        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9999999999"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        e.preventDefault();
+}
+</script>
 
 </body>
 

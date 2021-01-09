@@ -1,21 +1,22 @@
 const express = require('express');
-const { ensureAuthenticated } = require('../config/auth');
-const User = require('../models/User');
-const Assignment = require('../models/Assignment');
 const router = express.Router();
 
+// Helper modules here
+const User = require('../models/User');
+const Assignment = require('../models/Assignment');
+const { ensureAuthenticated } = require('../config/auth');
+
+
+// Routes for the admin side here
 router.get('/getAllUsers', ensureAuthenticated, getAllUsers);
-
 router.get('/getAllExperts', ensureAuthenticated, getAllExperts);
-
 router.get('/getAllAssignments',ensureAuthenticated, getAllAssignments);
-
 router.post('/assignAssignment',ensureAuthenticated, assignAssignment);
-
 router.get('/checkAssignment',ensureAuthenticated, checkAssignment);
+router.get('/dashboard', ensureAuthenticated, adminDashboard);
 
-router.get('/dashboard', ensureAuthenticated, myDashboard);
 
+// Functions called here
 function getAllUsers(req,res,next){
     User.find({role: 'user'})
     .then(function(users){
@@ -67,7 +68,7 @@ function checkAssignment(req,res,next){
     })
 }
 
-function myDashboard(req,res,next){
+function adminDashboard(req,res,next){
     Assignment.find({isSolved: false, expert_id: null}).sort({upload_timestamp: -1})
       .then(function(assignments){
           return(assignments);

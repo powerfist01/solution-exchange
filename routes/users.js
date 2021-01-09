@@ -3,24 +3,41 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
-// Load User model
+// Helper modules here
 const User = require('../models/User');
-const { forwardAuthenticated } = require('../config/auth');
+const Assignment = require('../models/Assignment');
+const upload = require('../helper/local_upload');
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
-// Login Page
-router.get('/login', forwardAuthenticated, getLoginPage);
 
-// Register Page
+// Routes for the client side here
 router.get('/register', forwardAuthenticated, getRegisterPage);
+router.get('/login', forwardAuthenticated, getLoginPage);
+router.post('/register', registerUser);
+router.post('/login', loginUser);
+router.get('/logout', logoutUser);
+router.get('/assignments', ensureAuthenticated ,getAssignments);
+router.post('/upload', ensureAuthenticated, upload.array('assignment'), uploadAssignment);
 
-// Register
-router.post('/register', (req, res) => {
-  const { username, email, password, password2 } = req.body;
-  User.findOne({ email: email }).then(user => {
+
+// Functions called here
+function getRegisterPage(req,res,next){
+  res.render('user_register')
+}
+
+function getLoginPage(req,res,next){
+  res.render('user_login')
+}
+
+function registerUser(req, res) {
+  const { username, email, phone, password, password2 } = req.body;
+  
+  User.findOne({ phone: phone }).then(user => {
     if (user) {
       res.render('register', {
         username,
         email,
+        phone,
         password,
         password2
       });
@@ -28,6 +45,7 @@ router.post('/register', (req, res) => {
       const newUser = new User({
         username,
         email,
+        phone,
         password
       });
 
@@ -38,37 +56,43 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then(user => {
-              res.redirect('/users/login');
+              res.redirect('/user/login');
             })
             .catch(err => console.log(err));
         });
       });
     }
   });
-});
+}
 
-// Login here
-router.post('/login', (req, res, next) => {
+function loginUser(req, res, next){
   passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
+    failureRedirect: '/user/login',
   })(req, res, next);
-});
-
-// Logout here
-router.get('/logout', logout);
-
-function getRegisterPage(req,res,next){
-  res.render('register')
 }
 
-function getLoginPage(req,res,next){
-  res.render('login')
-}
-
-function logout(req,res,next){
+function logoutUser(req,res,next){
   req.logout();
-  res.redirect('/users/login');
+  res.redirect('/user/login');
+}
+
+function getAssignments(req,res,next){
+  Assignment.find({user_id: req.user._id})
+  .then(function(assignments){
+      console.log(assignments)
+      res.render('user_assignments',{
+          assignments: assignments
+      });
+  })
+}
+
+function uploadAssignment(req,res,next){
+  try {
+    return res.redirect('/dashboard');
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 module.exports = router;

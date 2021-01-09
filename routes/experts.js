@@ -5,26 +5,41 @@ const passport = require('passport');
 
 const User = require('../models/User');
 const Assignment = require('../models/Assignment');
-
-var upload = require('../helper/s3_uploadSolution');
-
+const upload = require('../helper/upload_solution');
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 
-// Login Page
+// Expert routes to be called here
+
 router.get('/login', forwardAuthenticated, getLoginPage);
-
-// Register Page
 router.get('/register', forwardAuthenticated, getRegisterPage);
+router.post('/register', registerExpert);
+router.post('/login', loginExpert);
+router.get('/logout', ensureAuthenticated, logoutExpert);
+router.get('/assignments', ensureAuthenticated, getAssignments);
+router.get('/dashboard', ensureAuthenticated, myDashboard);
+router.post('/acceptAssignment', ensureAuthenticated, acceptAssignment);
+router.post('/uploadSolution', ensureAuthenticated, upload.array('solution'), uploadSolution);
 
-// Register
-router.post('/register', (req, res) => {
-  const { username, email, password, password2 } = req.body;
+
+// Function to be called here
+
+function getLoginPage(req, res, next){
+  res.render('expert_login')
+}
+
+function getRegisterPage(req, res, next){
+  res.render('expert_register')
+}
+
+function registerExpert(req, res){
+  const { username, phone, email, password, password2 } = req.body;
 
   User.findOne({ email: email }).then(user => {
     if (user) {
       res.render('register', {
         username,
         email,
+        phone,
         password,
         password2
       });
@@ -33,6 +48,7 @@ router.post('/register', (req, res) => {
       const newUser = new User({
         username,
         email,
+        phone,
         password,
         role
       });
@@ -51,42 +67,16 @@ router.post('/register', (req, res) => {
       });
     }
   });
-});
+}
 
-// Login
-router.post('/login', (req, res, next) => {
+function loginExpert(req, res, next){
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/expert/login',
   })(req, res, next);
-});
-
-// Logout
-router.get('/logout', ensureAuthenticated, logout);
-
-router.get('/assignments', ensureAuthenticated, getAssignments);
-
-router.get('/dashboard', ensureAuthenticated, myDashboard);
-
-router.post('/acceptAssignment', ensureAuthenticated, acceptAssignment);
-
-router.post('/uploadSolution', ensureAuthenticated, upload.array('solution'), (req,res,next) => {
-  try {
-      res.redirect('/expert/assignments');
-  } catch (error) {
-      console.error(error);
-  }
-})
-
-function getLoginPage(req, res, next){
-  res.render('expert_login')
 }
 
-function getRegisterPage(req, res, next){
-  res.render('expert_register')
-}
-
-function logout(req, res){
+function logoutExpert(req, res){
   req.logout();
   res.redirect('/expert/login');
 }
@@ -120,5 +110,14 @@ function acceptAssignment(req,res,next){
     }
   })
 }
+
+function uploadSolution(req,res,next){
+  try {
+      res.redirect('/expert/assignments');
+  } catch (error) {
+      console.error(error);
+  }
+}
+
 
 module.exports = router;

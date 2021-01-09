@@ -10,13 +10,13 @@
 
 <body class="homepage is-preload">
     <div id="page-wrapper">
-        <section id="header" class="wrapper">            
+        <section id="header" class="wrapper">
                 <!-- Nav -->
                 <nav id="nav">
                     <ul>
                         <li><a href="/">Welcome</a></li>
-                        <li><a href="/users/register">User SignUP</a></li>
-                        <li><a href="/users/login">User login</a></li>
+                        <li><a href="/user/register">User SignUP</a></li>
+                        <li><a href="/user/login">User login</a></li>
                         <li><a href="/expert/register">Experts signup</a></li>
                         <li><a href="/expert/login">Experts login</a></li>
                     </ul>
@@ -51,6 +51,9 @@
                                         <input type="email" name="email" id="email" placeholder="Email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
                                     </div>
                                     <div class="col-12 col-12-small">
+                                        <input type="text" name="phone" id="phone" placeholder="Phone Number" value="<%= typeof phone != 'undefined' ? phone : '' %>"/>
+                                    </div>
+                                    <div class="col-12 col-12-small">
                                         <input type="password" name="password" id="password" placeholder="Password" value="<%= typeof password != 'undefined' ? password : '' %>"/>
                                     </div>
                                     <div class="col-12 col-12-small">
@@ -64,7 +67,6 @@
                                     </div>
                                 </div>
                             </form>
-                            <h3 class="solid">Already have an account? <a href="/expert/login">Login here</a></h3>
                         </section>
                     </div>
                     
