@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 // Helper modules here
 const User = require('../models/User');
@@ -8,6 +9,9 @@ const { ensureAuthenticated } = require('../config/auth');
 
 
 // Routes for the admin side here
+router.get('/registerExpert', ensureAuthenticated, getRegisterPage);
+router.post('/registerExpert', registerExpert);
+
 router.get('/getAllUsers', ensureAuthenticated, getAllUsers);
 router.get('/getAllExperts', ensureAuthenticated, getAllExperts);
 router.get('/getAllAssignments',ensureAuthenticated, getAllAssignments);
@@ -15,8 +19,49 @@ router.post('/assignAssignment',ensureAuthenticated, assignAssignment);
 router.get('/checkAssignment',ensureAuthenticated, checkAssignment);
 router.get('/dashboard', ensureAuthenticated, adminDashboard);
 
-
 // Functions called here
+function getRegisterPage(req, res, next){
+    res.render('expert_register')
+}
+
+function registerExpert(req, res){
+    const { username, phone, email, password, password2 } = req.body;
+  
+    User.findOne({ email: email }).then(user => {
+      if (user) {
+        res.render('expert_register', {
+          username,
+          email,
+          phone,
+          password,
+          password2
+        });
+      } else {
+        let role = 'expert';
+        const newUser = new User({
+          username,
+          email,
+          phone,
+          password,
+          role
+        });
+  
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser
+              .save()
+              .then(user => {
+                res.redirect('/admin/registerExpert');
+              })
+              .catch(err => console.log(err));
+          });
+        });
+      }
+    });
+  }
+
 function getAllUsers(req,res,next){
     User.find({role: 'user'})
     .then(function(users){

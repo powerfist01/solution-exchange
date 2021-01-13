@@ -11,8 +11,6 @@ const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 // Expert routes to be called here
 
 router.get('/login', forwardAuthenticated, getLoginPage);
-router.get('/register', forwardAuthenticated, getRegisterPage);
-router.post('/register', registerExpert);
 router.post('/login', loginExpert);
 router.get('/logout', ensureAuthenticated, logoutExpert);
 router.get('/assignments', ensureAuthenticated, getAssignments);
@@ -25,48 +23,6 @@ router.post('/uploadSolution', ensureAuthenticated, upload.array('solution'), up
 
 function getLoginPage(req, res, next){
   res.render('expert_login')
-}
-
-function getRegisterPage(req, res, next){
-  res.render('expert_register')
-}
-
-function registerExpert(req, res){
-  const { username, phone, email, password, password2 } = req.body;
-
-  User.findOne({ email: email }).then(user => {
-    if (user) {
-      res.render('register', {
-        username,
-        email,
-        phone,
-        password,
-        password2
-      });
-    } else {
-      let role = 'expert';
-      const newUser = new User({
-        username,
-        email,
-        phone,
-        password,
-        role
-      });
-
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.password = hash;
-          newUser
-            .save()
-            .then(user => {
-              res.redirect('/expert/login');
-            })
-            .catch(err => console.log(err));
-        });
-      });
-    }
-  });
 }
 
 function loginExpert(req, res, next){

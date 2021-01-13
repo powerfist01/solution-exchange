@@ -18,7 +18,6 @@
                         <li><a href="/">Welcome</a></li>
                         <li><a href="/user/register">User SignUP</a></li>
                         <li><a href="/user/login">User login</a></li>
-                        <li><a href="/expert/register">Experts signup</a></li>
                         <li><a href="/expert/login">Experts login</a></li>
                     </ul>
                 </nav>
@@ -28,30 +27,17 @@
         <section id="main" class="wrapper style2">
             <div class="container">
                 <div class="row">
-                    <div class="col-6 col-12-medium">
-                        <section class="feature-list small">
-                            <div class="row">
-                                <div class="col-12 col-12-medium">
-                                    <!-- <section>
-                                        <h3 class="solid">Study Today</h3>
-                                        <p>
-                                            Study today for success, <br />
-                                            do it today.
-                                        </p>
-                                    </section> -->
-                                </div>
-                            </div>
-                        </section>
+                    <div class="col-3 col-4-medium">
+    
                     </div>
 
                     <div class="col-6 col-12-small">
                         
-                        <!-- Sign Up Form -->
                         <section>
                             <form method="post" action="/user/register">
                                 <div class="row gtr-50">
                                     <div class="col-12 col-12-small">
-                                        <input type="text" name="username" id="username" placeholder="username" value="<%= typeof username != 'undefined' ? username : '' %>"/>
+                                        <input type="text" name="username" id="username" placeholder="Username" value="<%= typeof username != 'undefined' ? username : '' %>"/>
                                     </div>
                                     <div class="col-12 col-12-small">
                                         <input type="email" name="email" id="email" placeholder="Email" value="<%= typeof email != 'undefined' ? email : '' %>"/>

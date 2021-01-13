@@ -9,10 +9,9 @@ var instance = new Razorpay({
     key_secret: 'YOJRtJMpbRIBg6W0fG6AKxww'
   })
 
-
 router.get('getOrderNumber', ensureAuthenticated, getOrderNumber);
 
-function getOrderNumber(req,res,next){ 
+function getOrderNumber(req,res,next){
     const {amount, currency} = req.body;
     console.log(amount, currency);
     var options = {
