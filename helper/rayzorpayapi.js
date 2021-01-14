@@ -9,7 +9,7 @@ var instance = new Razorpay({
     key_secret: 'YOJRtJMpbRIBg6W0fG6AKxww'
   })
 
-router.get('getOrderNumber', ensureAuthenticated, getOrderNumber);
+router.get('/order', ensureAuthenticated, getOrderNumber);
 
 function getOrderNumber(req,res,next){
     const {amount, currency} = req.body;
@@ -22,6 +22,28 @@ function getOrderNumber(req,res,next){
       instance.orders.create(options, function(err, order) {
         console.log(order);
       });
+
+
+      try {
+        const options = {
+          amount: 10 * 100,
+          currency: "INR",
+          receipt: "order_rcptid_11",
+          payment_capture: 0,
+        };
+      instance.orders.create(options, async function (err, order) {
+        if (err) {
+          return res.status(500).json({
+            message: "Something Went Wrong",
+          });
+        }
+      return res.status(200).json(order);
+     });
+    } catch (err) {
+      return res.status(500).json({
+        message: "Something Went Wrong",
+      });
+     }
 }
 
 module.exports = router;

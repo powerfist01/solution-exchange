@@ -78,7 +78,7 @@ function logoutUser(req,res,next){
 }
 
 function getAssignments(req,res,next){
-  Assignment.find({user_id: req.user._id})
+  Assignment.find({user_id: req.user._id}).sort({upload_timestamp: -1})
   .then(function(assignments){
       console.log(assignments)
       res.render('user_assignments',{

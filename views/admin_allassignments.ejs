@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>S.No</th>
                                         <th>Username</th>
-                                        <th>Assignment</th>
+                                        <th>Assignment name</th>
                                         <th>Expert</th>
                                         <th>Upload Timestamp</th>
                                         <th>Due Date</th>
@@ -46,7 +46,7 @@
                                     </tr>
                                     <% for(let i=0; i < assignments.length; i++) { %>
                                        <tr>
-                                        <td><%= i %></td>
+                                        <td><%= i+1 %></td>
                                         <td><%= assignments[i].username %></td>
                                         <td><%= assignments[i].filename %></td>
                                         <td><%= assignments[i].expert_username %></td>
