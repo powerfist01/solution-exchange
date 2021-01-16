@@ -30,7 +30,6 @@
         <!-- Main -->
             <div id="main" class="wrapper style2">
                 <div class="container">
-
                     <div id="content">
                         <article class="box post">
                             <header class="style1">
@@ -46,17 +45,16 @@
                                     </tr>
                                     <% for(let i=0; i < assignments.length; i++) { %>
                                        <tr>
-                                        <td><%= i+1 %></td>
-                                        <td><%= assignments[i].username %></td>
-                                        <td><%= assignments[i].filename %></td>
-                                        <td><%= assignments[i].expert_username %></td>
-                                        <td><%= assignments[i].upload_timestamp %></td>
-                                         <td><%= assignments[i].due_date %></td>
-                                         <td><%= assignments[i].solution %></td>
+                                            <td><%= i+1 %></td>
+                                            <td><%= assignments[i].username %></td>
+                                            <td><a href=https://assignments-soluge.s3.us-east-2.amazonaws.com/assignments/<%= assignments[i].filename %> ><%= assignments[i].filename %></a></td>
+                                            <td><%= assignments[i].expert_username %></td>
+                                            <td><%= assignments[i].upload_timestamp %></td>
+                                            <td><%= assignments[i].due_date %></td>
+                                            <td><%= assignments[i].solution %></td>
                                        </tr>
                                     <% } %>
                                 </table>
-
                             </header>
                         </article>
                     </div>

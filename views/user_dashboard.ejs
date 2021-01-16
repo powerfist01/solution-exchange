@@ -97,33 +97,53 @@
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-    console.log('<%= subjects %>')
-    var options = {
-        "key": "rzp_test_zUSc3vnrbpf5dU", // Enter the Key ID generated from the Dashboard
-        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "INR",
-        "name": "Acme Corp",
+    // console.log('<%= subjects %>')
+
+    document.getElementById('rzp-button1').onclick = function(e){
+        e.preventDefault();
+        let payload = {
+            amount : "50000",
+            currency : "INR"
+        }
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let data = JSON.parse(this.responseText);
+                console.log(data);
+                createPayment(data["order"],data["email"],data["phone"]);
+            } else {
+                
+            }
+        };
+
+        xhr.open('POST', '/payments/order', true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send(JSON.stringify(payload));
+    }
+
+    function createPayment(data,email,phone){
+        let options = {
+        "key": "rzp_test_zUSc3vnrbpf5dU", 
+        "amount": data["amount"], 
+        "currency": data["currency"],
+        "name": "Solution Exchange",
         "description": "Test Transaction",
-        "image": "https://example.com/your_logo",
-        "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+        "order_id": data["id"],
+        "callback_url": "http://localhost:7000/payments/checkout",
         "prefill": {
-            "name": "Gaurav Kumar",
-            "email": "gaurav.kumar@example.com",
-            "contact": "9999999999"
-        },
-        "notes": {
-            "address": "Razorpay Corporate Office"
+            "name": "",
+            "email": email,
+            "contact": phone
         },
         "theme": {
             "color": "#3399cc"
         }
     };
-    var rzp1 = new Razorpay(options);
-    document.getElementById('rzp-button1').onclick = function(e){
-        rzp1.open();
-        e.preventDefault();
-}
+    let rzp1 = new Razorpay(options);
+    rzp1.open();
+    }
 </script>
 
 </body>

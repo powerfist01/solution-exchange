@@ -7,7 +7,6 @@ const User = require('../models/User');
 const Assignment = require('../models/Assignment');
 const { ensureAuthenticated } = require('../config/auth');
 
-
 // Routes for the admin side here
 router.get('/registerExpert', ensureAuthenticated, getRegisterPage);
 router.post('/registerExpert', registerExpert);
