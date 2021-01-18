@@ -112,9 +112,9 @@
             if (this.readyState == 4 && this.status == 200) {
                 let data = JSON.parse(this.responseText);
                 console.log(data);
-                createPayment(data["order"],data["email"],data["phone"]);
+                createPayment(data["order"],data["name"],data["email"],data["phone"]);
             } else {
-                
+                // some code here
             }
         };
 
@@ -123,7 +123,7 @@
         xhr.send(JSON.stringify(payload));
     }
 
-    function createPayment(data,email,phone){
+    function createPayment(data,name,email,phone){
         let options = {
         "key": "rzp_test_zUSc3vnrbpf5dU", 
         "amount": data["amount"], 
@@ -133,7 +133,7 @@
         "order_id": data["id"],
         "callback_url": "http://localhost:7000/payments/checkout",
         "prefill": {
-            "name": "",
+            "name": name,
             "email": email,
             "contact": phone
         },

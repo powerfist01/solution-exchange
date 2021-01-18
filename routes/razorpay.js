@@ -32,6 +32,7 @@ function getOrderNumber(req,res,next){
       newOrder.save();
       res.json({
         order: order,
+        name: req.user.fullname,
         email: req.user.email,
         phone: req.user.phone
       })

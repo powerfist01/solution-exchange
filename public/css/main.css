@@ -1435,7 +1435,7 @@ input, select, textarea {
 
 	section,
 	article {
-		margin: 0 0 4em 0;
+		margin: 0 0 0em 0;
 	}
 
 	section > :last-child,
@@ -2041,7 +2041,7 @@ input, select, textarea {
 		-ms-justify-content: center;
 		justify-content: center;
 		position: relative;
-		height: 18em;
+		height: 10em;
 		background: url("../../images/banner.jpg") center center;
 		background-size: cover;
 		padding: 0;
@@ -2058,7 +2058,7 @@ input, select, textarea {
 		}
 
 		.homepage #header {
-			height: 18em;
+			height: 10em;
 		}
 
 /* Logo */
