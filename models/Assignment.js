@@ -30,6 +30,14 @@ const AssignmentSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    is_paid: {
+        type: Boolean,
+        default: false
+    },
+    amount_paid: {
+        type: String,
+        default: null
+    },
     expert_id: {
         type: String,
         default: null

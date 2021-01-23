@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
-const User = require('../models/User');
 const Assignment = require('../models/Assignment');
 const upload = require('../helper/upload_solution');
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
@@ -38,7 +36,7 @@ function logoutExpert(req, res){
 }
 
 function getAssignments(req, res, next) {
-  Assignment.find({ expert_id: req.user._id, accepted: true })
+  Assignment.find({ expert_id: req.user._id, accepted: true, is_paid: true })
     .then(function (assignments) {
       res.render('expert_assignments', {
         assignments: assignments

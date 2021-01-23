@@ -80,7 +80,7 @@ function getAllExperts(req,res,next){
 }
 
 function getAllAssignments(req,res,next){
-    Assignment.find().sort({upload_timestamp: -1})
+    Assignment.find({is_paid: true}).sort({upload_timestamp: -1})
     .then(function(assignments){
         res.render('admin_allassignments',{
             assignments: assignments
@@ -113,7 +113,7 @@ function checkAssignment(req,res,next){
 }
 
 function adminDashboard(req,res,next){
-    Assignment.find({isSolved: false, expert_id: null}).sort({upload_timestamp: -1})
+    Assignment.find({isSolved: false, expert_id: null, is_paid: true}).sort({upload_timestamp: -1})
       .then(function(assignments){
           return(assignments);
       })

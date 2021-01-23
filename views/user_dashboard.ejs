@@ -10,15 +10,9 @@
 
 <body class="no-sidebar is-preload">
     <div id="page-wrapper">
-
+        
         <!-- Header -->
             <section id="header" class="wrapper">
-
-                <!-- Logo -->
-                    <div id="logo">
-                        <h1>Hello <%= user.username %></h1>
-                        <!-- <p>A free responsive site template by HTML5 UP</p> -->
-                    </div>
 
                 <!-- Nav -->
                     <nav id="nav">
@@ -26,7 +20,6 @@
                             <li><a href="/dashboard">Home</a></li>
                             <li><a href="#">Profile</a></li>
                             <li><a href="/user/assignments">My Assignments</a></li>
-                            <li><a href="#">Settings</a></li>
                             <li class="current"><a href="/user/logout">Logout</a></li>
                         </ul>
                     </nav>
@@ -34,41 +27,68 @@
 
         <!-- Main -->
             <div id="main" class="wrapper style2">
-                <!-- <div class="title">No Sidebar</div> -->
                 <div class="container">
 
                     <div id="content">
-                        <article class="box post">
-                            <!-- <header class="style1">
-                                <h2>Lorem ipsum dolor sit amet magna egestas<br class="mobile-hide" />
-                                morbi bibendum sed malesuada</h2>
-                            </header> -->
-                        </article>
+
+                            <% if(assignments.length) { %>
+                                <article class="box post">
+                                    <header class="style1">
+                                        <table class="default">
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Assignment name</th>
+                                                <th>Due Date</th>
+                                                <th>Submit Fees</th>
+                                            </tr>
+                                            
+                                            <% for(let i=0; i < assignments.length; i++) { %>
+                                               <tr>
+                                                <td><%= i+1 %></td>
+                                                <td><a href="https://assignments-soluge.s3.us-east-2.amazonaws.com/assignments/"+ <%= assignments[i].filename %>><%= assignments[i].filename %></a></td>
+                                                 <td><%= assignments[i].due_date %></td>
+                                                 <td><button id=<%= assignments[i]._id %> class="rzp-button1">Pay</button></td>
+                                               </tr>
+                                            <% } %>
+                                        </table>
+        
+                                    </header>
+                                </article>
+                            <% } 
+                            %>
+
                         <section>
                             <form action="/user/upload" method="post" enctype="multipart/form-data">
-                                <div class="row gtr-50">
-                                    <div class="col-12 col-12-small">
-                                        <select name="subject_id" id="subject">
-                                            <option value="0">- Select a subject -</option>
-                                            <% for(let i=0; i < subjects.length; i++) { %>
-                                                <option value=<%= subjects[i].id %> ><%= subjects[i].subjectName %></option>
-                                             <% } %>                                         
-                                        </select>
+                                <div class="row gtr-50" style="margin-top: 150px;">
+                                    <div class="col-1">
+                                        
                                     </div>
-                                    <div class="col-12 col-12-small">
-                                        <input type="date" name="due_date" id="due_date">
-                                    </div>
-                                    <div class="col-12 col-12-small">
-                                        <input type="file" name="assignment" id="assignment">
-                                    </div>
-                                    <div class="col-12 col-12-small">
-                                        <button type="submit" class="button primary icon solid fa-upload" value="Upload">Upload</button>
-                                       <input type="reset" class="style1" value="Reset" />
+                                    <div class="col-10">
+                                        <div class="col-12 col-12-small">
+                                            <select name="subject_id" id="subject">
+                                                <option value="0">- Select a subject -</option>
+                                                <% for(let i=0; i < subjects.length; i++) { %>
+                                                    <option value=<%= subjects[i].id %> ><%= subjects[i].subjectName %></option>
+                                                 <% } %>                                     
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="col-12 col-12-small">
+                                            <input type="date" name="due_date" id="due_date">
+                                        </div>
+                                        <br>
+                                        <div class="col-12 col-12-small">
+                                            <input type="file" name="assignment" id="assignment">
+                                        </div>
+                                        <br>
+                                        <div class="col-12 col-12-small">
+                                            <button type="submit" class="button primary icon solid fa-upload" value="Upload">Upload</button>
+                                           <input type="reset" class="style1" value="Reset" />
+                                        </div>
                                     </div>
                                 </div>
                             </form>
                         </section>
-                        <button id="rzp-button1">Pay</button>
                     </div>
                 </div>
             </div>
@@ -99,11 +119,11 @@
 <script>
     // console.log('<%= subjects %>')
 
-    document.getElementById('rzp-button1').onclick = function(e){
-        e.preventDefault();
+    $('.rzp-button1').click(function(){
         let payload = {
             amount : "50000",
-            currency : "INR"
+            currency : "INR",
+            assignment_id : this.id
         }
 
         let xhr = new XMLHttpRequest();
@@ -121,16 +141,17 @@
         xhr.open('POST', '/payments/order', true);
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.send(JSON.stringify(payload));
-    }
 
-    function createPayment(data,name,email,phone){
+    })
+
+    function createPayment(order_data,name,email,phone){
         let options = {
         "key": "rzp_test_zUSc3vnrbpf5dU", 
-        "amount": data["amount"], 
-        "currency": data["currency"],
+        "amount": order_data["amount"], 
+        "currency": order_data["currency"],
         "name": "Solution Exchange",
         "description": "Test Transaction",
-        "order_id": data["id"],
+        "order_id": order_data["id"],
         "callback_url": "http://localhost:7000/payments/checkout",
         "prefill": {
             "name": name,

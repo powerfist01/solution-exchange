@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const router = express.Router();
 
 const Order = require('../models/Order');
+const Assignment = require('../models/Assignment');
 
 const { ensureAuthenticated } = require('../config/auth');
 
@@ -29,6 +30,8 @@ function getOrderNumber(req,res,next){
         order_id : order["id"]
       });
       req.session.order_id = order["id"];
+      req.session.assignment_id = req.body.assignment_id;
+      req.session.amount = req.body.amount;
       newOrder.save();
       res.json({
         order: order,
@@ -51,11 +54,21 @@ function checkout(req,res,next){
   let generated_signature = hmac.digest('hex');
 
   if (generated_signature == razorpay_signature) {
-    Order.updateOne({order_id: order_id},{ razorpay_payment_id: razorpay_payment_id, razorpay_order_id: razorpay_order_id, razorpay_signature: razorpay_signature}, function(err,result){
+    Order.updateOne({order_id: order_id},{ razorpay_payment_id: razorpay_payment_id, razorpay_order_id: razorpay_order_id, razorpay_signature: razorpay_signature}, function(err){
         if(err){
             console.log(err);
         } else {
-            res.redirect("/dashboard");
+          let assignment_id = req.session.assignment_id;
+          let amount = req.session.amount;
+          Assignment.updateOne({_id: assignment_id},{ is_paid: true, amount_paid: amount}, function(err){
+            if(err){
+                console.log(err);
+            } else {
+              req.session.assignment_id = null;
+              req.session.amount = null;
+              res.redirect("/dashboard");
+            }
+          })
         }
     })
   } else {
