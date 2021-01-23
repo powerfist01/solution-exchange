@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 
 const Assignment = require('../models/Assignment');
+const User = require('../models/User');
+
 const upload = require('../helper/upload_solution');
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 
@@ -15,7 +17,8 @@ router.get('/assignments', ensureAuthenticated, getAssignments);
 router.get('/dashboard', ensureAuthenticated, myDashboard);
 router.post('/acceptAssignment', ensureAuthenticated, acceptAssignment);
 router.post('/uploadSolution', ensureAuthenticated, upload.array('solution'), uploadSolution);
-
+router.get('/profile', ensureAuthenticated ,getProfilePage);
+router.post('/profile', ensureAuthenticated, updateProfile);
 
 // Function to be called here
 
@@ -73,5 +76,20 @@ function uploadSolution(req,res,next){
   }
 }
 
+function getProfilePage(req,res,next){
+  res.render('expert_profile',{user: req.user});
+}
+
+
+function updateProfile(req,res,next){
+  const {username, fullname, email, phone } = req.body;
+
+  User.updateOne({_id:req.user.id}, {username: username, fullname: fullname, email: email, phone: phone}, function(err){
+    if(err)
+      throw err;
+    else
+      res.redirect('/expert/profile');
+  })
+}
 
 module.exports = router;

@@ -18,6 +18,8 @@ router.post('/login', loginUser);
 router.get('/logout', logoutUser);
 router.get('/assignments', ensureAuthenticated ,getAssignments);
 router.post('/upload', ensureAuthenticated, upload.array('assignment'), uploadAssignment);
+router.get('/profile', ensureAuthenticated ,getProfilePage);
+router.post('/profile', ensureAuthenticated, updateProfile);
 
 
 // Functions called here
@@ -95,4 +97,18 @@ function uploadAssignment(req,res,next){
   }
 }
 
+function getProfilePage(req,res,next){
+  res.render('user_profile',{user: req.user});
+}
+
+function updateProfile(req,res,next){
+  const {username, fullname, school, email, phone } = req.body;
+
+  User.updateOne({_id:req.user.id}, {username: username, fullname: fullname, school: school, email: email, phone: phone}, function(err){
+    if(err)
+      throw err;
+    else
+      res.redirect('/user/profile');
+  })
+}
 module.exports = router;

@@ -10,27 +10,27 @@
 
 <body class="no-sidebar is-preload">
     <div id="page-wrapper">
-        
+
         <!-- Header -->
             <section id="header" class="wrapper">
-
                 <!-- Nav -->
                     <nav id="nav">
                         <ul>
                             <li><a href="/dashboard">Home</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="/user/assignments">My Assignments</a></li>
-                            <li class="current"><a href="/user/logout">Logout</a></li>
+                            <li><a href="/expert/profile">Profile</a></li>
+                            <li><a href="/expert/assignments">My Assignments</a></li>
+                            <li class="current"><a href="/expert/logout">Logout</a></li>
                         </ul>
                     </nav>
             </section>
 
         <!-- Main -->
             <div id="main" class="wrapper style2">
+                <!-- <div class="title">No Sidebar</div> -->
                 <div class="container">
 
                     <div id="content">
-                        <form action="/user/profile" method="post">
+                        <form action="/expert/profile" method="post">
                             <div class="row gtr-50" style="margin-top: 0px">
                                 <div class="col-1">
                                     
@@ -42,10 +42,6 @@
                                     <br>
                                     <div class="col-12 col-12-small">
                                         <h2>Fullname: </h2> <input type="text" name="fullname" value="<%= typeof user.fullname != 'undefined' ? user.fullname : '' %>" >
-                                    </div>
-                                    <br>
-                                    <div class="col-12 col-12-small">
-                                        <h2>School/College: </h2><input type="text" name="school" value="<%= typeof user.school != 'undefined' ? user.school : '' %>">
                                     </div>
                                     <br>
                                     <div class="col-12 col-12-small">
@@ -88,9 +84,6 @@
 	<script src="../js/breakpoints.min.js"></script>
 	<script src="../js/util.js"></script>
 	<script src="../js/main.js"></script>
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
 </body>
 
 </html>
