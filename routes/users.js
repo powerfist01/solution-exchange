@@ -9,7 +9,6 @@ const Assignment = require('../models/Assignment');
 const upload = require('../helper/local_upload');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
-
 // Routes for the client side here
 router.get('/register', forwardAuthenticated, getRegisterPage);
 router.get('/login', forwardAuthenticated, getLoginPage);
@@ -21,7 +20,6 @@ router.post('/upload', ensureAuthenticated, upload.array('assignment'), uploadAs
 router.get('/profile', ensureAuthenticated ,getProfilePage);
 router.post('/profile', ensureAuthenticated, updateProfile);
 router.get('/forgotPassword', forgotPassword);
-
 
 // Functions called here
 function getRegisterPage(req,res,next){
@@ -77,6 +75,7 @@ function loginUser(req, res, next){
 
 function logoutUser(req,res,next){
   req.logout();
+  req.flash('success_msg', 'You are logged out');
   res.redirect('/user/login');
 }
 
@@ -114,7 +113,7 @@ function updateProfile(req,res,next){
 }
 
 function forgotPassword(req,res,next){
-  res.send("I know for now!!!")
+  res.send("I know for now!!!");
 }
 
 module.exports = router;
