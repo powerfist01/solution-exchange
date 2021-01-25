@@ -20,6 +20,7 @@ router.get('/assignments', ensureAuthenticated ,getAssignments);
 router.post('/upload', ensureAuthenticated, upload.array('assignment'), uploadAssignment);
 router.get('/profile', ensureAuthenticated ,getProfilePage);
 router.post('/profile', ensureAuthenticated, updateProfile);
+router.get('/forgotPassword', forgotPassword);
 
 
 // Functions called here
@@ -111,4 +112,9 @@ function updateProfile(req,res,next){
       res.redirect('/user/profile');
   })
 }
+
+function forgotPassword(req,res,next){
+  res.send("I know for now!!!")
+}
+
 module.exports = router;
