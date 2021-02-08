@@ -5,7 +5,7 @@ const passport = require('passport');
 const Assignment = require('../models/Assignment');
 const User = require('../models/User');
 
-const upload = require('../helper/upload_solution');
+const upload = require('../helper/s3_uploadSolution');
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
 
 // Expert routes to be called here

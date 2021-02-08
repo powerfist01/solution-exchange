@@ -6,7 +6,7 @@ const passport = require('passport');
 // Helper modules here
 const User = require('../models/User');
 const Assignment = require('../models/Assignment');
-const upload = require('../helper/local_upload');
+const upload = require('../helper/s3_upload');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 // Routes for the client side here
