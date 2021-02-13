@@ -50,7 +50,7 @@
                                             <td><a href=https://assignments-soluge.s3.us-east-2.amazonaws.com/assignments/<%= assignments[i].filename %> ><%= assignments[i].filename %></a></td>
                                             <td><%= assignments[i].expert_username %></td>
                                             <td><%= assignments[i].upload_timestamp %></td>
-                                            <td><%= assignments[i].due_date %></td>
+                                            <td><%= moment(assignments[i].due_date).format('Do MMM, YYYY')  %></td>
                                             <td><%= assignments[i].solution %></td>
                                        </tr>
                                     <% } %>

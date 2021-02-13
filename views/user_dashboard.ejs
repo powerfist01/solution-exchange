@@ -10,10 +10,8 @@
 
 <body class="no-sidebar is-preload">
     <div id="page-wrapper">
-        
         <!-- Header -->
             <section id="header" class="wrapper">
-
                 <!-- Nav -->
                     <nav id="nav">
                         <ul>
@@ -28,7 +26,7 @@
         <!-- Main -->
             <div id="main" class="wrapper style2">
                 <div class="container">
-
+                    <% include ./partials/messages %>
                     <div id="content">
 
                             <% if(assignments.length) { %>
@@ -46,7 +44,7 @@
                                                <tr>
                                                 <td><%= i+1 %></td>
                                                 <td><a href="https://assignments-soluge.s3.us-east-2.amazonaws.com/assignments/"+ <%= assignments[i].filename %>><%= assignments[i].filename %></a></td>
-                                                 <td><%= assignments[i].due_date %></td>
+                                                 <td><%= moment(assignments[i].due_date).format('Do MMM, YYYY')  %></td>
                                                  <td><button id=<%= assignments[i]._id %> class="rzp-button1">Pay</button></td>
                                                </tr>
                                             <% } %>
@@ -59,7 +57,7 @@
 
                         <section>
                             <form action="/user/upload" method="post" enctype="multipart/form-data">
-                                <div class="row gtr-50" style="margin-top: 150px;">
+                                <div class="row gtr-50" style="margin-top: 100px;">
                                     <div class="col-1">
                                         
                                     </div>
