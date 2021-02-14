@@ -2119,10 +2119,10 @@ input, select, textarea {
 				#nav > ul > li > a, #nav > ul > li > span {
 					display: block;
 					color: #eee;
-					color: rgba(255, 255, 255, 0.75);
-					text-transform: uppercase;
+					color: white;
 					text-decoration: none;
-					font-size: 0.7em;
+					font-weight: 600;
+					font-size: 1.25em;
 					letter-spacing: 0.25em;
 					height: 5em;
 					line-height: 5em;
