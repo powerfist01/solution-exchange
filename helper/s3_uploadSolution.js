@@ -15,7 +15,7 @@ const s3 = new aws.S3();
 const fileFilter = (req, file, cb) => {
     if(file.originalname.match(/\.(txt|pdf|docx|jpg|jpeg|png|zip)$/)){
         const { assignment_id } = req.body;
-        Assignment.updateOne({_id: assignment_id},{ solution_filename: file.originalname, solved_timestamp: Date.now()}, function(err,result){
+        Assignment.updateOne({_id: assignment_id},{ isSolved: true,solution_filename: file.originalname, solved_timestamp: Date.now()}, function(err,result){
             if(err){
                 console.log(err);
             } else {

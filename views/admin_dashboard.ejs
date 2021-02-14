@@ -54,7 +54,7 @@
                                                 <td><%= assignments[i].username %></td>
                                                 <td><a href="https://assignments-soluge.s3.us-east-2.amazonaws.com/assignments/"+ <%= assignments[i].filename %>><%= assignments[i].filename %></a></td>
                                                 <td><%= assignments[i].subject %></td>
-                                                <td><%= assignments[i].upload_timestamp %></td>
+                                                <td><%= moment(assignments[i].upload_timestamp).format('Do MMM, YYYY')  %></td>
                                                 <td><%= moment(assignments[i].due_date).format('Do MMM, YYYY')  %></td>
                                                 <td>
                                                     <select name="expert" class="<%= assignments[i]._id %>">

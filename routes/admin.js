@@ -25,10 +25,36 @@ function getRegisterPage(req, res, next){
 
 function registerExpert(req, res){
     const { username, phone, email, password, password2 } = req.body;
-  
-    User.findOne({ email: email }).then(user => {
+
+    let errors = [];
+
+  if (!username || !email || !password || !password2) {
+    errors.push({ msg: 'Please enter all fields' });
+  }
+
+  if (password != password2) {
+    errors.push({ msg: 'Passwords do not match' });
+  }
+
+  if (password.length < 6) {
+    errors.push({ msg: 'Password must be at least 6 characters' });
+  }
+
+  if (errors.length > 0) {
+    res.render('expert_register', {
+      errors,
+      username,
+      email,
+      phone,
+      password,
+      password2
+    });
+  } else {
+    User.findOne({ phone: phone }).then(user => {
       if (user) {
+        errors.push({ msg: 'User already exists' });
         res.render('expert_register', {
+          errors,
           username,
           email,
           phone,
@@ -52,6 +78,10 @@ function registerExpert(req, res){
             newUser
               .save()
               .then(user => {
+                req.flash(
+                  'success_msg',
+                  'Expert has been registered.'
+                );
                 res.redirect('/admin/registerExpert');
               })
               .catch(err => console.log(err));
@@ -59,6 +89,7 @@ function registerExpert(req, res){
         });
       }
     });
+    }
   }
 
 function getAllUsers(req,res,next){

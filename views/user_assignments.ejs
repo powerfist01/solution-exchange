@@ -44,7 +44,7 @@
                                         <td><%= i+1 %></td>
                                         <td><a href="https://assignments-soluge.s3.us-east-2.amazonaws.com/assignments/"+ <%= assignments[i].filename %>><%= assignments[i].filename %></a></td>
                                          <td><%= moment(assignments[i].due_date).format('Do MMM, YYYY')  %></td>
-                                         <td><%= assignments[i].solution_filename %></td>
+                                         <td><a href="https://assignments-soluge.s3.us-east-2.amazonaws.com/assignments/"+ <%= assignments[i].solution_filename %>><%= assignments[i].solution_filename %></a></td>
                                        </tr>
                                     <% } %>
                                 </table>

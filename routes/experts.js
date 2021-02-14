@@ -33,8 +33,9 @@ function loginExpert(req, res, next){
   })(req, res, next);
 }
 
-function logoutExpert(req, res){
+function logoutExpert(req, res){ 
   req.logout();
+  req.flash('success_msg', 'You are logged out');
   res.redirect('/expert/login');
 }
 

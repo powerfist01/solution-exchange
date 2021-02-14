@@ -6,7 +6,7 @@ const passport = require('passport');
 // Helper modules here
 const User = require('../models/User');
 const Assignment = require('../models/Assignment');
-const upload = require('../helper/local_upload');
+const upload = require('../helper/s3_upload');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 // Routes for the client side here
@@ -59,7 +59,7 @@ function registerUser(req, res) {
   } else {
     User.findOne({ phone: phone }).then(user => {
       if (user) {
-        errors.push({ msg: 'Phone already exists' });
+        errors.push({ msg: 'User already exists' });
         res.render('user_register', {
           errors,
           username,
@@ -113,7 +113,6 @@ function logoutUser(req,res,next){
 function getAssignments(req,res,next){
   Assignment.find({user_id: req.user._id, is_paid: true}).sort({upload_timestamp: -1})
   .then(function(assignments){
-      console.log(assignments)
       res.render('user_assignments',{
           assignments: assignments
       });
