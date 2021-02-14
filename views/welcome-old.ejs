@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Soluge</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="shortcut icon" href="../public/favicon.ico">
+</head>
+
+<body class="homepage is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+			<section id="header" class="wrapper">
+				
+					<div id="logo"> 
+						<a href="/"><img src="images/logo.jpeg" style="width:30%;"></a>
+					</div>
+					<nav id="nav">
+						<ul>
+							<li></li>
+							<li><a href="/user/register">User SignUP</a></li>
+							<li><a href="/user/login">User login</a></li>
+							<li><a href="/expert/login">Experts login</a></li>
+						</ul>
+					</nav>
+			</section>
+			
+			<section id="main" style="margin-top: 30px;">
+				<div class="container">
+					<% include ./partials/carousel %>
+				</div>
+			</section>
+
+		<!-- Main -->
+			<section id="main" class="wrapper style2" style="margin-top: 120px;">
+				<div class="container">
+
+					<section id="features">
+			
+						<div class="feature-list">
+							<div class="row">
+								<div class="col-6 col-12-medium">
+									<section>
+										<h3 class="icon fa-comment">The Best Tutors</h3>
+										<p>From Ph.D.s to teachers, doctors, professors and Industry experts , Our tutors are best in their domain.</p>
+									</section>
+								</div>
+								<div class="col-6 col-12-medium">
+									<section>
+										<h3 class="icon solid fa-image">Personalized</h3>
+										<p>Personalized dashboard and approach to your requirement.</p>
+									</section>
+								</div>
+								<div class="col-6 col-12-medium">
+									<section>
+										<h3 class="icon fa-image">Full Privacy</h3>
+										<p>We maintain full privacy of our customers.</p>
+									</section>
+								</div>
+								<div class="col-6 col-12-medium">
+									<section>
+										<h3 class="icon solid fa-cog">Satisfaction Guranteed</h3>
+										<p>We maintain quality of our service above 90%.</p>
+									</section>
+								</div>
+							</div>
+						</div>
+						<ul class="actions special">
+							<li><a href="/user/login" class="button style1 large">Log in</a></li>
+							<li><a href="/user/register" class="button style2 large">Sign up</a></li>
+						</ul>
+					</section>
+				</div>
+			</section>
+
+		<!-- Highlights -->
+			<section id="highlights" class="wrapper style3">
+				<!-- <div class="title">The Endorsements</div> -->
+				<div class="container">
+					<div class="row aln-center">
+						<div class="col-4 col-12-medium">
+							<section class="highlight">
+								<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+								
+								<p>“SOLUGE is one stop destination for my academic problems”</p>
+								<h3>- Student from Michigan University</h3>
+							</section>
+						</div>
+						<div class="col-4 col-12-medium">
+							<section class="highlight">
+								<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+				
+								<p>“With SOLUGE it was easy me to understand difficult concepts”</p>
+								<h3>- Student from New York University</h3>
+							</section>
+						</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<section id="footer" class="wrapper">
+				<div class="title">Feedback</div>
+				<div class="container">
+					<header class="style1">
+						<p>
+							Your feedback is important to us
+						</p>
+					</header>
+					<div class="row">
+						<div class="col-6 col-12-medium">
+							<br>
+							<!-- Contact Form -->
+								<section>
+									<form method="post" action="/feedback">
+										<div class="row gtr-50">
+											<div class="col-6 col-12-small">
+												<input type="text" name="name" id="contact-name" placeholder="Name" />
+											</div>
+											<div class="col-6 col-12-small">
+												<input type="text" name="email" id="contact-email" placeholder="Email" />
+											</div>
+											<div class="col-12">
+												<textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
+											</div>
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" class="style1" value="Send" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</section>
+
+						</div>
+					</div>
+					<div id="copyright">
+						<ul>
+							<li>&copy; Soluge</li><li>All rights reserved.</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+	</div>
+	<!-- Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.dropotron.min.js"></script>
+	<script src="../js/browser.min.js"></script>
+	<script src="../js/breakpoints.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -1,158 +1,153 @@
 <!DOCTYPE HTML>
 <html>
+	<head>
+		<title>Soluge</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../css/main-welcome.css" />
+		<link rel="shortcut icon" href="../public/favicon.ico">
+	</head>
+	<body class="landing is-preload">
+		<div id="page-wrapper">
 
-<head>
-	<title>Soluge</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="../css/main.css" />
-	<link rel="shortcut icon" href="../public/favicon.ico">
-</head>
-
-<body class="homepage is-preload">
-	<div id="page-wrapper">
-
-		<!-- Header -->
-			<section id="header" class="wrapper">
-				<img src="images/logo.jpeg" style="width:10%; margin-top: 30px; margin-left: 30px;">
-					<div id="logo"> 
-						
-					</div>
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1><a href="/"><img src="images/soluge-logo.jpeg" style="width: 60%;"/></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="/">Welcome</a></li>
-							<li><a href="/user/register">User SignUP</a></li>
-							<li><a href="/user/login">User login</a></li>
-							<li><a href="/expert/login">Experts login</a></li>
+							<li><a href="/expert/login"  style="color: white; font-weight: 600;" class="button primary">Expert Login</a></li>
 						</ul>
 					</nav>
-			</section>
-			
-			<section id="main" style="margin-top: 30px;">
-				<div class="container">
-					<% include ./partials/carousel %>
-				</div>
-			</section>
+				</header>
 
-		<!-- Main -->
-			<section id="main" class="wrapper style2" style="margin-top: 120px;">
-				<div class="container">
+			<!-- Banner -->
+				<section id="banner">
+					<h2 style="font-size: 115px;">Soluge</h2>
+					<p>Your Problems, Our Solution.</p>
+					<ul class="actions special">
+						<li><a href="/user/register" style="color: white !important; font-weight: 600;"  class="button primary">REGISTER</a></li>
+						<li><a href="/user/login" style="color: white !important; font-weight: 600;"  class="button primary">LOGIN</a></li>
+					</ul>
+				</section>
 
-					<section id="features">
-			
-						<div class="feature-list">
-							<div class="row">
-								<div class="col-6 col-12-medium">
-									<section>
-										<h3 class="icon fa-comment">The Best Tutors</h3>
-										<p>From Ph.D.s to teachers, doctors, professors and Industry experts , Our tutors are best in their domain.</p>
-									</section>
-								</div>
-								<div class="col-6 col-12-medium">
-									<section>
-										<h3 class="icon solid fa-image">Personalized</h3>
-										<p>Personalized dashboard and approach to your requirement.</p>
-									</section>
-								</div>
-								<div class="col-6 col-12-medium">
-									<section>
-										<h3 class="icon fa-image">Full Privacy</h3>
-										<p>We maintain full privacy of our customers.</p>
-									</section>
-								</div>
-								<div class="col-6 col-12-medium">
-									<section>
-										<h3 class="icon solid fa-cog">Satisfaction Guranteed</h3>
-										<p>We maintain quality of our service above 90%.</p>
-									</section>
-								</div>
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<section class="box special">
+						<header class="major">
+							<h2 style="font-size: 70px; font-weight: 600;">Why Us?</h2>
+							<!-- <p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br />
+							adipiscing nunc adipiscing. Condimentum turpis massa.</p> -->
+						</header>
+						<!-- <span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
+					</section>
+
+					<section class="box special features">
+						<div class="features-row">
+							<section>
+								<span><img src="images/tutor.png" alt="" style="width: 20%;"/></span>
+								<h3>The Best Tutors</h3>
+								<p>From Ph.D.s to teachers, doctors, professors and Industry experts , Our tutors are best in their domain.</p>
+							</section>
+							<section>
+								<span><img src="images/personalized.jpg" alt="" style="width: 20%;"/></span>
+								<h3>Personalized</h3>
+								<p>Personalized dashboard and approach to your requirement.</p>
+							</section>
+						</div>
+						<div class="features-row">
+							<section>
+								<span><img src="images/qual.webp" alt="" style="width: 20%;"/></span>
+								<h3>Satisfaction Guranteed</h3>
+								<p>We maintain quality of our service above 90%.</p>
+							</section>
+							<section>
+								<span><img src="images/sec.png" alt="" style="width: 20%;"/></span>
+								<h3>Full Privacy</h3>
+								<p>We maintain full privacy of our customers.</p>
+							</section>
+						</div>
+					</section>
+
+					<div class="row">
+						<div class="col-6 col-12-narrower">
+
+							<section class="box special">
+								<!-- <span class="image featured"><img src="images/pic02.jpg" alt="" /></span> -->
+								
+								<h3>SOLUGE is one stop destination for my academic problems.</h3>
+								<p> - Student from Michigan University</p>
+							</section>
+
+						</div>
+						<div class="col-6 col-12-narrower">
+
+							<section class="box special">
+								<!-- <span class="image featured"><img src="images/pic03.jpg" alt="" /></span> -->
+								<h3>With SOLUGE it was easy me to understand difficult concepts.</h3>
+								<p> - Student from New York University</p>
+								
+							
+							</section>
+
+						</div>
+					</div>
+
+				</section>
+				
+				<section id="main" style="margin-top: 30px;">
+					<div class="container">
+						<% include ./partials/carousel %>
+					</div>
+				</section>
+
+			<!-- CTA -->
+				<section id="cta">
+
+					<h2>Feedback</h2>
+					<p>Your feedback is important to us</p>
+
+					<form method="post" action="/feedback">
+						<div class="row gtr-50">
+							<div class="col-12">
+								<input type="text" name="name" id="contact-name" placeholder="Name" required/>
+								<br>
+							</div>
+							<div class="col-12">
+								<input type="text" name="email" id="contact-email" placeholder="Email" required/>
+								<br>
+							</div>
+							<div class="col-12">
+								<textarea name="message" id="contact-message" placeholder="Message" rows="4" required></textarea>
+								<br>
+							</div>
+							<div class="col-12">
+								<ul class="actions">
+									<li><input type="submit" class="style1" style="background: #e97770 url('images/overlay.png');color: white !important; font-weight: 600;" value="SEND" /></li>
+								</ul>
 							</div>
 						</div>
-						<ul class="actions special">
-							<li><a href="/user/login" class="button style1 large">Log in</a></li>
-							<li><a href="/user/register" class="button style2 large">Sign up</a></li>
-						</ul>
-					</section>
-				</div>
-			</section>
+					</form>
 
-		<!-- Highlights -->
-			<section id="highlights" class="wrapper style3">
-				<!-- <div class="title">The Endorsements</div> -->
-				<div class="container">
-					<div class="row aln-center">
-						<div class="col-4 col-12-medium">
-							<section class="highlight">
-								<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								
-								<p>“SOLUGE is one stop destination for my academic problems”</p>
-								<h3>- Student from Michigan University</h3>
-							</section>
-						</div>
-						<div class="col-4 col-12-medium">
-							<section class="highlight">
-								<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-				
-								<p>“With SOLUGE it was easy me to understand difficult concepts”</p>
-								<h3>- Student from New York University</h3>
-							</section>
-						</div>
-						</div>
-					</div>
-				</div>
-			</section>
+				</section>
 
-		<!-- Footer -->
-			<section id="footer" class="wrapper">
-				<div class="title">Feedback</div>
-				<div class="container">
-					<header class="style1">
-						<p>
-							Your feedback is important to us
-						</p>
-					</header>
-					<div class="row">
-						<div class="col-6 col-12-medium">
-							<br>
-							<!-- Contact Form -->
-								<section>
-									<form method="post" action="/feedback">
-										<div class="row gtr-50">
-											<div class="col-6 col-12-small">
-												<input type="text" name="name" id="contact-name" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-small">
-												<input type="text" name="email" id="contact-email" placeholder="Email" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
-											</div>
-											<div class="col-12">
-												<ul class="actions">
-													<li><input type="submit" class="style1" value="Send" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
-								</section>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="copyright">
+						<li>&copy; Soluge</li><li>All rights reserved.</a></li>
+					</ul>
+				</footer>
 
-						</div>
-					</div>
-					<div id="copyright">
-						<ul>
-							<li>&copy; Soluge</li><li>All rights reserved.</a></li>
-						</ul>
-					</div>
-				</div>
-			</section>
-	</div>
-	<!-- Scripts -->
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/jquery.dropotron.min.js"></script>
-	<script src="../js/browser.min.js"></script>
-	<script src="../js/breakpoints.min.js"></script>
-	<script src="../js/util.js"></script>
-	<script src="../js/main.js"></script>
-</body>
+		</div>
 
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
