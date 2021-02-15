@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Soluge</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../css/main.css" />
+</head>
+
+<body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <section id="header" class="wrapper">
+            <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="/dashboard">Home</a></li>
+                        <li><a href="/admin/profile">Profile</a></li>
+                        <li><a href="/admin/getAllUsers">Users</a></li>
+                        <li><a href="/admin/getAllExperts">Experts</a></li>
+                        <li><a href="/admin/getAllAssignments">Assignments</a></li>
+                        <li><a href="/admin/registerExpert">Register Expert</a></li>
+                        <li><a href="/expert/logout">Logout</a></li>
+                    </ul>
+                </nav>
+        </section>
+
+        <!-- Main -->
+            <div id="main" class="wrapper style2">
+                <div class="container">
+                    <% include ./partials/messages %>
+                    <div id="content">
+                        <form action="/admin/profile" method="post">
+                            <div class="row gtr-50" style="margin-top: 0px">
+                                <div class="col-1">
+                                    
+                                </div>
+                                <div class="col-10">
+                                    <div class="col-12 col-12-small">
+                                        <h2>Username: </h2> <input type="text" name="username" value="<%= typeof user.username != 'undefined' ? user.username : '' %>" >
+                                    </div>
+                                    <br>
+                                    <div class="col-12 col-12-small">
+                                        <h2>Fullname: </h2> <input type="text" name="fullname" value="<%= typeof user.fullname != 'undefined' ? user.fullname : '' %>" >
+                                    </div>
+                                    <br>
+                                    <div class="col-12 col-12-small">
+                                        <h2>E-mail:</h2><input type="email" name="email" id="email" value="<%= typeof user.email != 'undefined' ? user.email : '' %>">
+                                    </div>
+                                    <br>
+                                    <div class="col-12 col-12-small">
+                                        <h2>Phone:</h2><input type="text" name="phone" id="phone" value="<%= typeof user.phone != 'undefined' ? user.phone : '' %>">
+                                    </div>
+                                    <br>
+                                    <div class="col-12 col-12-small">
+                                        <button type="submit" class="button primary">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Footer -->
+            <section id="footer" class="wrapper">
+                <!-- <div class="title">The Rest Of It</div> -->
+                <div class="container">
+                    <div id="copyright">
+                        <ul>
+                            <li>&copy; Soluge</li><li>All rights reserved.</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+    </div>
+
+	<!-- Scripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.dropotron.min.js"></script>
+	<script src="../js/browser.min.js"></script>
+	<script src="../js/breakpoints.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -18,6 +18,25 @@ router.post('/assignAssignment',ensureAuthenticated, assignAssignment);
 router.get('/checkAssignment',ensureAuthenticated, checkAssignment);
 router.get('/dashboard', ensureAuthenticated, adminDashboard);
 
+router.get('/profile', ensureAuthenticated, getProfilePage);
+router.post('/profile', ensureAuthenticated, updateProfile);
+
+
+function getProfilePage(req,res,next){
+  res.render('admin_profile',{user: req.user});
+}
+
+function updateProfile(req,res,next){
+  const {username, fullname, email, phone } = req.body;
+
+  User.updateOne({_id:req.user.id}, {username: username, fullname: fullname, email: email, phone: phone}, function(err){
+    if(err)
+      throw err;
+    else
+      res.redirect('/admin/profile');
+  })
+}
+
 // Functions called here
 function getRegisterPage(req, res, next){
     res.render('expert_register')
