@@ -7,8 +7,8 @@ const subjects = require('../controller/subjects');
 
 
 aws.config.update({
-    secretAccessKey: 'WYEFLJ4VVBHiUbFULLtDGEstrj/JfTatg6tR6VwC',
-    accessKeyId: 'AKIAITAUQPYHV3AJKAUQ',
+    secretAccessKey: '',
+    accessKeyId: '',
     region: 'us-east-1'
 });
 
