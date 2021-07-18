@@ -5,8 +5,8 @@ const User = require('../models/User');
 const Assignment = require('../models/Assignment');
 
 aws.config.update({
-    secretAccessKey: 'WYEFLJ4VVBHiUbFULLtDGEstrj/JfTatg6tR6VwC',
-    accessKeyId: 'AKIAITAUQPYHV3AJKAUQ',
+    secretAccessKey: '',
+    accessKeyId: '',
     region: 'us-east-1'
 });
 
