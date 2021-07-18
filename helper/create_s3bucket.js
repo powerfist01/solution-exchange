@@ -1,9 +1,9 @@
 const AWS = require('aws-sdk');
 const fs = require('fs');
 // Enter copied or downloaded access ID and secret key here
-const AWSAccessKeyId='AKIAITAUQPYHV3AJKAUQ'
+const AWSAccessKeyId=''
 
-const AWSSecretKey='WYEFLJ4VVBHiUbFULLtDGEstrj/JfTatg6tR6VwC'
+const AWSSecretKey=''
 
 // The name of the bucket that you have created
 const BUCKET_NAME = 'assignments-soluge';
